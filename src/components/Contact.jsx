@@ -44,28 +44,29 @@ const Contact = () => {
     {
       icon: 'fas fa-envelope',
       title: 'Email',
-      value: 'jordan.mitchell@email.com',
+      value: 'wa588085@gmail.com',
       gradient: 'from-blue-500 to-purple-500'
     },
     {
       icon: 'fas fa-phone',
       title: 'Phone',
-      value: '+1 (555) 123-4567',
+      value: '+92 3039889517 ',
       gradient: 'from-green-500 to-teal-500'
     },
     {
       icon: 'fas fa-map-marker-alt',
       title: 'Location',
-      value: 'San Francisco, CA',
+      value: 'Karachi, Pakistan, LY',
       gradient: 'from-purple-500 to-pink-500'
     }
   ]
 
   const socialLinks = [
-    { icon: 'fab fa-linkedin', href: '#', gradient: 'from-blue-600 to-blue-700' },
-    { icon: 'fab fa-github', href: '#', gradient: 'from-gray-800 to-gray-900' },
-    { icon: 'fab fa-twitter', href: '#', gradient: 'from-blue-400 to-blue-500' },
+    { icon: 'fab fa-linkedin', href: 'https://www.linkedin.com/in/waqas-ali-094098336/', gradient: 'from-blue-600 to-blue-700' },
+    { icon: 'fab fa-github', href: 'https://github.com/WaqasOnGit', gradient: 'from-gray-800 to-gray-900' },
+    { icon: 'fab fa-twitter', href: 'https://x.com/waqasashraf006', gradient: 'from-blue-400 to-blue-500' },
     { icon: 'fab fa-dribbble', href: '#', gradient: 'from-pink-500 to-red-500' }
+    
   ]
 
   return (

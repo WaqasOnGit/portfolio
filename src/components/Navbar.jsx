@@ -48,7 +48,7 @@ const Navbar = ({ theme, onThemeToggle }) => {
         <div className="flex justify-between items-center py-6">
           {/* Logo */}
           <div className="text-2xl font-bold">
-            <span className="gradient-text">JM</span>
+            <span className="gradient-text">WA</span>
           </div>
           
           {/* Desktop Navigation */}

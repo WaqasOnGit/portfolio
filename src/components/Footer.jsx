@@ -6,10 +6,10 @@ const Footer = () => {
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           <div className="text-2xl font-bold">
-            <span className="gradient-text">Jordan Mitchell</span>
+            <span className="gradient-text">Waqas Ashraf </span>
           </div>
           <p style={{ color: 'var(--text-secondary)' }}>
-            © 2024 Jordan Mitchell. Crafted with passion and modern web technologies.
+            © 2025 WAQAS ASHRAF . Crafted with passion and modern web technologies.
           </p>
         </div>
         

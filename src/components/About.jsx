@@ -68,7 +68,7 @@ const About = () => {
               </span>
               <span className="glass px-4 py-2 rounded-full text-sm font-medium flex items-center space-x-2 hover:scale-105 transition-all duration-300">
                 <i className="fab fa-js-square text-yellow-400"></i>
-                <span>TypeScript</span>
+                <span>javascript</span>
               </span>
               <span className="glass px-4 py-2 rounded-full text-sm font-medium flex items-center space-x-2 hover:scale-105 transition-all duration-300">
                 <i className="fab fa-node-js text-green-400"></i>
