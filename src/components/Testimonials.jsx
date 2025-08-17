@@ -1,6 +1,8 @@
 import React from 'react'
 import { useInView } from 'react-intersection-observer'
-
+import ahmadImage from '../assets/images/ahmad.webp.jpeg'
+import moizImage from '../assets/images/Moiz Khan.jpeg'
+import sidneyImage from '../assets/images/Sidney Simone Barmoha.jpeg'
 
 const Testimonials = () => {
   const [ref, inView] = useInView({
@@ -10,24 +12,24 @@ const Testimonials = () => {
 
   const testimonials = [
     {
-      name: 'Sarah Chen',
-      role: 'Product Manager, TechFlow',
-      avatar: '👨‍💻',
-      content: "Jordan's attention to detail and ability to translate complex requirements into beautiful, functional interfaces is exceptional. The project exceeded our expectations.",
+      name: 'Ahmad',
+      role: 'Software Developer',
+      avatar: ahmadImage,
+      content: "Waqas Ashraf's attention to detail and ability to translate complex requirements into beautiful, functional interfaces is exceptional. The project exceeded our expectations.",
       gradient: 'from-blue-400 to-purple-500'
     },
     {
-      name: 'Marcus Rodriguez',
+      name: 'Moiz Khan',
       role: 'CTO, StartupLab',
-      avatar: '👨‍💻',
-      content: "Working with Jordan was a game-changer for our platform. His modern approach to frontend development and performance optimization delivered outstanding results.",
+      avatar: moizImage,
+      content: "Working with Waqas Ashraf was a game-changer for our platform. His modern approach to frontend development and performance optimization delivered outstanding results.",
       gradient: 'from-green-400 to-blue-500'
     },
     {
-      name: 'Emma Thompson',
+      name: 'Sidney Simone Barmoha',
       role: 'Design Lead, CreativeStudio',
-      avatar: '👩‍🎨',
-      content: "Jordan has an incredible ability to bring designs to life with pixel-perfect precision. His understanding of modern web standards is impressive.",
+      avatar: sidneyImage,
+      content: "Waqas Ashraf has an incredible ability to bring designs to life with pixel-perfect precision. His understanding of modern web standards is impressive.",
       gradient: 'from-purple-400 to-pink-500'
     }
   ]
@@ -56,8 +58,16 @@ const Testimonials = () => {
               style={{ animationDelay: `${index * 0.2}s` }}
             >
               <div className="flex items-center mb-6">
-                <div className={`w-16 h-16 bg-gradient-to-r ${testimonial.gradient} rounded-full flex items-center justify-center text-2xl mr-4`}>
-                  {testimonial.avatar}
+                <div className={`w-16 h-16 bg-gradient-to-r ${testimonial.gradient} rounded-full flex items-center justify-center text-2xl mr-4 overflow-hidden`}>
+                  {typeof testimonial.avatar === 'string' && testimonial.avatar.startsWith('👨') || testimonial.avatar.startsWith('👩') ? (
+                    testimonial.avatar
+                  ) : (
+                    <img 
+                      src={testimonial.avatar} 
+                      alt={testimonial.name}
+                      className="w-full h-full object-cover rounded-full"
+                    />
+                  )}
                 </div>
                 <div>
                   <h4 className="text-lg font-bold">{testimonial.name}</h4>
