@@ -13,8 +13,8 @@ const Skills = () => {
       title: 'Frontend Development',
       skills: [
         { name: 'React & Next.js', icon: 'fab fa-react', color: 'text-blue-400', level: 5 },
-        { name: 'TypeScript', icon: 'fab fa-js-square', color: 'text-yellow-400', level: 4 },
-        { name: 'Tailwind CSS', icon: 'fas fa-wind', color: 'text-cyan-400', level: 5 }
+        { name: 'javascript', icon: 'fab fa-js-square', color: 'text-yellow-400', level: 4 },
+        { name: 'Tailwind CSS', icon: 'fas fa-wind', color: 'text-cyan-400', level: 4 }
       ]
     },
     {

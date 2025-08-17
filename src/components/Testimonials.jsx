@@ -1,6 +1,7 @@
 import React from 'react'
 import { useInView } from 'react-intersection-observer'
 
+
 const Testimonials = () => {
   const [ref, inView] = useInView({
     threshold: 0.1,
@@ -11,7 +12,7 @@ const Testimonials = () => {
     {
       name: 'Sarah Chen',
       role: 'Product Manager, TechFlow',
-      avatar: '👩‍💼',
+      avatar: '👨‍💻',
       content: "Jordan's attention to detail and ability to translate complex requirements into beautiful, functional interfaces is exceptional. The project exceeded our expectations.",
       gradient: 'from-blue-400 to-purple-500'
     },
