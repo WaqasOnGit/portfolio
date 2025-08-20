@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useInView } from 'react-intersection-observer'
+import ui from '../assets/images/ahmad.webp.jpeg'
 
 const Projects = () => {
   const [ref, inView] = useInView({
@@ -17,9 +18,9 @@ const Projects = () => {
       description: 'Full-stack e-commerce platform with advanced filtering, real-time inventory, and seamless checkout experience.',
       icon: '🛍️',
       gradient: 'from-blue-500 via-purple-600 to-pink-500',
-      tech: ['React', 'Next.js', 'Stripe', 'MongoDB'],
-      github: 'https://github.com/username/modernshop',
-      demo: 'https://modernshop-demo.vercel.app',
+      tech: ['React.js', 'tailwind.css', 'javaStripe', ''],
+      github: 'https://github.com/WaqasOnGit/ModernShop',
+      demo: 'https://modern-shop-five.vercel.app/',
       details: {
         overview: 'A full-stack e-commerce platform built with modern web technologies. Features include advanced product filtering, real-time inventory management, secure payment processing with Stripe, and a comprehensive admin dashboard.',
         features: [
