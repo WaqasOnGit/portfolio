@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { useInView } from 'react-intersection-observer'
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore'
+import { db } from "../firebase/firebase"
 
 const Contact = () => {
   const [ref, inView] = useInView({
@@ -26,18 +28,45 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    
+    // Validate form data
+    if (!formData.name || !formData.email || !formData.subject || !formData.message) {
+      setSubmitStatus('error')
+      setTimeout(() => setSubmitStatus(null), 3000)
+      return
+    }
+
     setIsSubmitting(true)
     setSubmitStatus(null)
 
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false)
+    try {
+      // Create contact data
+      const contactData = {
+        name: formData.name.trim(),
+        email: formData.email.trim(),
+        subject: formData.subject.trim(),
+        message: formData.message.trim(),
+        createdAt: serverTimestamp(),
+        status: 'new'
+      }
+
+      // Save to Firestore
+      const contactsRef = collection(db, 'contacts')
+      const docRef = await addDoc(contactsRef, contactData)
+      
+      console.log('Contact saved successfully with ID:', docRef.id)
+      
+      // Success
       setSubmitStatus('success')
       setFormData({ name: '', email: '', subject: '', message: '' })
       
-      // Reset status after 3 seconds
-      setTimeout(() => setSubmitStatus(null), 3000)
-    }, 2000)
+    } catch (error) {
+      console.error('Firebase error:', error)
+      setSubmitStatus('error')
+    } finally {
+      setIsSubmitting(false)
+      setTimeout(() => setSubmitStatus(null), 5000)
+    }
   }
 
   const contactInfo = [
@@ -66,7 +95,6 @@ const Contact = () => {
     { icon: 'fab fa-github', href: 'https://github.com/WaqasOnGit', gradient: 'from-gray-800 to-gray-900' },
     { icon: 'fab fa-twitter', href: 'https://x.com/waqasashraf006', gradient: 'from-blue-400 to-blue-500' },
     { icon: 'fab fa-dribbble', href: '#', gradient: 'from-pink-500 to-red-500' }
-    
   ]
 
   return (
@@ -109,6 +137,8 @@ const Contact = () => {
                     <a 
                       key={index}
                       href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className={`w-12 h-12 bg-gradient-to-r ${social.gradient} rounded-full flex items-center justify-center hover:scale-110 transition-all duration-300`}
                     >
                       <i className={`${social.icon} text-white`}></i>
@@ -121,7 +151,7 @@ const Contact = () => {
 
           {/* Contact Form */}
           <div className={`glass rounded-3xl p-8 reveal-element ${inView ? 'revealed' : ''}`}>
-            <form className="space-y-6" onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="form-group">
                   <input
@@ -132,6 +162,7 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleInputChange}
                     className="form-input w-full px-6 py-4 rounded-xl text-lg transition-all duration-300 focus:scale-[1.02]"
+                    disabled={isSubmitting}
                   />
                 </div>
                 <div className="form-group">
@@ -143,9 +174,11 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleInputChange}
                     className="form-input w-full px-6 py-4 rounded-xl text-lg transition-all duration-300 focus:scale-[1.02]"
+                    disabled={isSubmitting}
                   />
                 </div>
               </div>
+              
               <div className="form-group">
                 <input
                   type="text"
@@ -155,8 +188,10 @@ const Contact = () => {
                   value={formData.subject}
                   onChange={handleInputChange}
                   className="form-input w-full px-6 py-4 rounded-xl text-lg transition-all duration-300 focus:scale-[1.02]"
+                  disabled={isSubmitting}
                 />
               </div>
+              
               <div className="form-group">
                 <textarea
                   name="message"
@@ -166,9 +201,11 @@ const Contact = () => {
                   value={formData.message}
                   onChange={handleInputChange}
                   className="form-input w-full px-6 py-4 rounded-xl text-lg resize-none transition-all duration-300 focus:scale-[1.02]"
+                  disabled={isSubmitting}
                 ></textarea>
               </div>
               
+              {/* Status Messages */}
               {submitStatus === 'success' && (
                 <div className="p-4 bg-green-500/20 border border-green-500/30 rounded-xl text-green-400 text-center">
                   <i className="fas fa-check-circle mr-2"></i>
@@ -176,6 +213,14 @@ const Contact = () => {
                 </div>
               )}
               
+              {submitStatus === 'error' && (
+                <div className="p-4 bg-red-500/20 border border-red-500/30 rounded-xl text-red-400 text-center">
+                  <i className="fas fa-exclamation-circle mr-2"></i>
+                  Failed to send message. Please try again or contact me directly.
+                </div>
+              )}
+              
+              {/* Submit Button */}
               <button
                 type="submit"
                 disabled={isSubmitting}
@@ -188,7 +233,7 @@ const Contact = () => {
                 {isSubmitting ? (
                   <>
                     <i className="fas fa-spinner fa-spin mr-2"></i>
-                    Sending Message<span className="loading-dots"></span>
+                    Sending Message...
                   </>
                 ) : (
                   <>
