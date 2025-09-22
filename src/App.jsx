@@ -7,9 +7,12 @@ import Projects from './components/Projects'
 import Testimonials from './components/Testimonials'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
+import SplashCursor from "./components/SplashCursor";
+
 
 function App() {
   const [theme, setTheme] = useState('dark')
+
 
   useEffect(() => {
     // Load saved theme from localStorage
@@ -27,6 +30,7 @@ function App() {
 
   return (
     <div className="App">
+       <SplashCursor />
       <Navbar theme={theme} onThemeToggle={toggleTheme} />
       <Hero />
       <About />
@@ -35,6 +39,7 @@ function App() {
       <Testimonials />
       <Contact />
       <Footer />
+      
     </div>
   )
 }
