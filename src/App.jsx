@@ -39,7 +39,7 @@ function App() {
           loading ? "opacity-0" : "opacity-100"
         }`}
       >
-        {/* <SplashCursor /> */}
+        <SplashCursor />
         <Navbar theme={theme} onThemeToggle={toggleTheme} />
         <Hero />
         <About />
