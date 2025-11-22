@@ -10,6 +10,7 @@ export default {
         'sans': ['Inter', 'system-ui', 'sans-serif'],
         'mono': ['JetBrains Mono', 'monospace'],
       },
+
       animation: {
         'gradient': 'gradient 8s linear infinite',
         'float': 'float 6s ease-in-out infinite',
@@ -20,10 +21,22 @@ export default {
         'fade-in': 'fadeIn 1.2s ease-out forwards',
         'scale-in': 'scaleIn 0.6s ease-out forwards',
         'reveal': 'reveal 1s ease-out forwards',
+
+
+        'draw': 'draw 6s ease-in-out forwards',
       },
+
+      keyframes: {
+        draw: {
+          "0%": { strokeDashoffset: "var(--len)" },
+          "100%": { strokeDashoffset: "0" },
+        },
+      },
+
       backdropBlur: {
         'xs': '2px',
       },
+
       colors: {
         'primary': {
           50: '#f0f9ff',
